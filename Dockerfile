@@ -1,6 +1,7 @@
 FROM beevelop/java
 
-MAINTAINER Maik Hummel <m@ikhummel.com>
+MAINTAINER Lee Meador <lee@leemeador.com>
+# Barely changed after being forked from beevelop/docker-android which today seems to be not getting updates for new android versions
 
 ENV ANDROID_SDK_URL="https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip" \
     ANDROID_BUILD_TOOLS_VERSION=27.0.0 \
@@ -17,7 +18,8 @@ WORKDIR /opt
 RUN dpkg --add-architecture i386 && \
     apt-get -qq update && \
     apt-get -qq install -y wget curl maven ant gradle libncurses5:i386 libstdc++6:i386 zlib1g:i386 && \
-
+    apt-get -y install sudo bzip2 ca-certificates
+    
     # Installs Android SDK
     mkdir android && cd android && \
     wget -O tools.zip ${ANDROID_SDK_URL} && \
