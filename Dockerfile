@@ -18,7 +18,7 @@ WORKDIR /opt
 RUN dpkg --add-architecture i386 && \
     apt-get -qq update && \
     apt-get -qq install -y wget curl maven ant gradle libncurses5:i386 libstdc++6:i386 zlib1g:i386 && \
-    apt-get -y install sudo bzip2 ca-certificates
+    apt-get -y install sudo bzip2 ca-certificates && \
     
     # Installs Android SDK
     mkdir android && cd android && \
